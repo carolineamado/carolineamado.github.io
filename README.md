@@ -1,42 +1,51 @@
-# brume
+# Autm-rb
 
-I am not a designer so I cannot impress you with breathtaking Jekyll themes, but brume is something that just came to my mind and I had to build it. It is a clean and simple theme, which has an index page that lists all your blog posts divided by year and an about page. brume uses redcarpet as the Markdown processor with strikethrough extension enabled by default (so you can use ~~ to strike out words).
+Another theme for jekyll.
+based on shiori and midnight
 
-This is how the "Home" page looks like.
+##[DEMO][demo]
 
-![Home](https://dl.dropboxusercontent.com/u/9924988/Screen%20Shot%202014-02-26%20at%2018.48.57.png)
+- DISQUS comments
+- google analitics
+- pagination
+- tags
+- codehighlighting
+- bootstrap components
+- font awesome
+- responsive
+- embeded video support
 
-And this is a single post.
+#### Contribution
+Pull Requests always welcome.
 
-![Home](https://dl.dropboxusercontent.com/u/9924988/Screen%20Shot%202014-04-06%20at%2012.56.08.png)
+## Screens
 
-## Usage
+![](http://i.imgur.com/i1OZoFF.png)
+![](http://i.imgur.com/oc2ZfjH.png)
 
-**Important:** The latest version of brume uses `site.baseurl` for links, therefore, if you want to put your site in a subdirectory, update the *_config.yml* file!
+## Installation
 
-- Download the ZIP file and extract it's contents.
-- Open *_config.yml* file and enter your site's URL and add additional configuration or update the existing one if needed.
-- Open *_data/brume.yml* file and fill in values for site name (site title), author (your name) and description (blog description). This file contains all the custom information about your page. You can access it using `site.data.brume` object.
-- Open *about/index.md* file and add information about you or your site. You can delete this file and directory if not needed.
-- Open *_data/links.yml* and add additional links or update the existing ones that you want to be displayed in the navigation menu.
-- If you don't want to use CC BY-NC 4.0 licence for the content, then you should change the footer text, which is located in *_layouts/default.html*.
-- Generate your site and be happy!
+- [Fork this repository][fork]
+- Clone it: `git clone https://github.com/YOUR-USER/autm-rb`
+- Install the [GitHub Pages gem][pages] (includes Jekyll): `bundle install`
+- Run the jekyll server: `jekyll serve` or `bundle exec jekyll serve`
 
-### Jekyll < 2.0.0
+## Customization
 
-I try to keep brume up to date with the newest Jekyll version. Jekyll 2.0.0 introduced a lot of changes (like a built in Sass support) that are not backward compatible, therefore I have created a separate branch `legacy` for those, who might be using an older Jekyll version. All the changes that I introduce in `master` will be ported to `legacy`.
+Edit this files before using 
+ 
+- _config.yml REQUIRED
+- /index.html - change the default image and email
+- /projects.html - here you can share some of your projects
+- /resume.html - write something about you
+- /favicon.ico change it or leave the existing one
+- _includes/title.html REQUIRED
 
-## Theme customization
+## Licensing
 
-This theme has 4 predefined colors that can be used for links:
+[MIT](https://github.com/railsr/autm-rb/blob/master/LICENSE)
 
-- azul
-- ruby
-- amber
-- avocado
 
-![Color Examples](https://dl.dropboxusercontent.com/u/9924988/colors_new.png)
-
-By default it uses *azure*, but if you want to select another one just change the second class of `container` div in *_layouts/default.html* to one of the provided names.
-
-Express your thoughts about brume on Twitter [@aigarsdz](http://twitter.com/aigarsdz), and help me make it better!
+[pages]: http://pages.github.com
+[fork]: https://github.com/railsr/autm-rb/fork
+[demo]: http://railsr.github.io/autm-rb/

@@ -1,35 +1,36 @@
 <!DOCTYPE html>
 <html>
   <head>
-    {% include head.html %}
-  </head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ "/public/stylesheets/bs.css" | prepend:site.baseurl }}">
+    <link rel="stylesheet" href="{{"/public/stylesheets/styles.css" | prepend:site.baseurl }}">
+    <link rel="stylesheet" href="{{"/public/stylesheets/pygment_trac.css" | prepend:site.baseurl }}">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet"> 
+    <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+      <link rel="icon" type="image/x-icon"  href="{{ "/favicon.ico" | prepend:site.baseurl }}" />
+    <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  </head> 
   <body>
-    <div class="container azul">
-      <header class="top row gutters{% if page.title == "Home" %} fadeInLeft animated{% endif %}">
-        <div class="col span_2 center">
-          <!-- TODO: add baseurl to the logo link -->
-          <a href="{{ site.url }}" id="logo" title="{{ site.data.brume.name }}"
-             style="background-image: url({{site.baseurl}}/public/images/logo.png);"></a>
-        </div>
-        {% include navigation.html %}
-      </header>
+    <div class="wrapper">    
+        <section>   
+          {% include title.html %}
+      
+          {{ content }} 
 
-      {{ content }}
-
-      <footer>
-        <p>
-          This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/deed.en_US">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
-        </p>
-      </footer>
+          {% include footer.html %}
+        </section>
+    </div>   
     </div>
-
-    <!-- scripts -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script src="{{site.baseurl}}/public/js/jquery.fitvids.js"></script>
-    <script>
-      $(document).ready(function(){
-        $("article").fitVids();
-      });
-    </script>
+    <script src="{{ "/public/javascripts/jquery.min.js" | prepend:site.baseurl }}"></script>
+    <script src="{{ "/public/javascripts/bootstrap.min.js" | prepend:site.baseurl }}"></script>
+    {% include scripts.html %}
   </body>
 </html>
