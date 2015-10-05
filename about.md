@@ -6,7 +6,7 @@ title: About Caroline Amado
 <div class="post">
 	<h1 class="pageTitle">About Caroline Amado</h1>
 	
-	<table style="width:80%">
+	<table style="width:100%">
 	<tr>
 		<td style="width: 30%"> </td><img src="{{ '/assets/img/me.jpg' | prepend: site.baseurl }}" alt="Caroline Amado"> <-Change these to respective widths
 
