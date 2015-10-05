@@ -1,69 +1,92 @@
-drafts_dir = '_drafts'
-posts_dir  = '_posts'
+require "html_compressor"
 
-# rake post['my new post']
-desc 'create a new post with "rake post[\'post title\']"'
-task :post, :title do |t, args|
-  if args.title
-    title = args.title
-  else
-    puts "Please try again. Remember to include the filename."
-  end
-  mkdir_p "#{posts_dir}"
-  filename = "#{posts_dir}/#{Time.now.strftime('%Y-%m-%d')}-#{title.downcase.gsub(/[^\w]+/, '-')}.md"
-  puts "Creating new post: #{filename}"
-  File.open(filename, "w") do |f|
-    f << <<-EOS.gsub(/^    /, '')
-    ---
-    layout: post
-    title: #{title}
-    date: #{Time.new.strftime('%Y-%m-%d %H:%M')}
-    categories:
-    ---
+##############
+#   Build    #
+##############
 
-    EOS
-  end
+# Generate the site
+# Minify, optimize, and compress
 
-# Uncomment the line below if you want the post to automatically open in your default text editor
-#  system ("#{ENV['EDITOR']} #{filename}")
+desc "build the site"
+task :build do
+  system "bundle exec jekyll build"
+  system "bundle exec rake minify_html" #Minify our HTML
 end
 
-# usage: rake draft['my new draft']
-desc 'create a new draft post with "rake draft[\'draft title\']"'
-task :draft, :title do |t, args|
-  if args.title
-    title = args.title
-  else
-    puts "Please try again. Remember to include the filename."
-  end
-  mkdir_p "#{drafts_dir}"
-  filename = "#{drafts_dir}/#{title.downcase.gsub(/[^\w]+/, '-')}.md"
-  puts "Creating new draft: #{filename}"
-  File.open(filename, "w") do |f|
-    f << <<-EOS.gsub(/^    /, '')
-    ---
-    layout: post
-    title: #{title}
-    date: #{Time.new.strftime('%Y-%m-%d %H:%M')}
-    categories:
-    ---
+##############
+#   Develop  #
+##############
 
-    EOS
-  end
+# Useful for development
+# It watches for chagnes and updates when it finds them
 
-# Uncomment the line below if you want the draft to automatically open in your default text editor
-# system ("#{ENV['EDITOR']} #{filename}")
+desc "Watch the site and regenerate when it changes"
+task :watch do
+  system "bundle exec jekyll serve --watch"
 end
 
-desc 'preview the site with drafts'
-task :preview do
-  puts "## Generating site"
-  puts "## Stop with ^C ( <CTRL>+C )"
-  system "jekyll serve --watch --drafts"
+##############
+#   Deploy   #
+##############
+
+# Deploy the site
+# Ping / Notify after site is deployed
+
+desc "deploy the site"
+task :deploy do
+  system "bundle exec s3_website push"
+  system "bundle exec rake notify" #ping google/bing about our sitemap updates
 end
 
-desc 'list tasks'
-task :list do
-  puts "Tasks: #{(Rake::Task.tasks - [Rake::Task[:list]]).join(', ')}"
-  puts "(type rake -T for more detail)\n\n"
+##############
+#   Minify   #
+##############
+
+desc "Minify HTML"
+task :minify_html do
+  puts "## Minifying HTML"
+  compressor = HtmlCompressor::HtmlCompressor.new
+  Dir.glob("_site/**/*.html").each do |name|
+    puts "Minifying #{name}"
+    input = File.read(name)
+    output = File.open("#{name}", "w")
+    output << compressor.compress(input)
+    output.close
+  end
+end
+
+##############
+#   Notify   #
+##############
+
+# Ping Google and Yahoo to let them know you updated your site
+
+site = "www.YOUR-URL.com"
+
+desc 'Notify Google of the new sitemap'
+task :sitemapgoogle do
+  begin
+    require 'net/http'
+    require 'uri'
+    puts '* Pinging Google about our sitemap'
+    Net::HTTP.get('www.google.com', '/webmasters/tools/ping?sitemap=' + URI.escape('#{site}/sitemap.xml'))
+  rescue LoadError
+    puts '! Could not ping Google about our sitemap, because Net::HTTP or URI could not be found.'
+  end
+end
+
+desc 'Notify Bing of the new sitemap'
+task :sitemapbing do
+  begin
+    require 'net/http'
+    require 'uri'
+    puts '* Pinging Bing about our sitemap'
+    Net::HTTP.get('www.bing.com', '/webmaster/ping.aspx?siteMap=' + URI.escape('#{site}/sitemap.xml'))
+  rescue LoadError
+    puts '! Could not ping Bing about our sitemap, because Net::HTTP or URI could not be found.'
+  end
+end
+
+desc "Notify various services about new content"
+task :notify => [:sitemapgoogle, :sitemapbing] do
 end

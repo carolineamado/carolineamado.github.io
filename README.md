@@ -1,188 +1,173 @@
-# Pixyll
+slim-pickins-jekyll-theme
+=============
 
-[pixyll.com](http://www.pixyll.com)
+Live Demo [HERE](http://chrisanthropic.github.io/slim-pickins-jekyll-theme/)
 
-![Pixyll screenshot](https://cloud.githubusercontent.com/assets/1424573/3847467/134aa236-1e66-11e4-8421-4e8c122118dc.png)
+Slim Pickins is what I consider to be a minimal 'core' theme with everything I need to quickly develop new themes for Jekyll.
 
-Pixyll is a simple, beautiful theme for Jekyll that emphasizes content rather than aesthetic fluff. It's mobile _first_, fluidly responsive, and delightfully lightweight.
+## Basic features include:
 
-It's pretty minimal, but leverages large type and drastic contrast to make a statement, on all devices.
+* SASS
+* Responsive grid (Zurb Foundation)
+* Responsive navigation
+* Optional full-width banner
+* Sticky footer
+* **Javascript free**
+* Custom Rakefile with tasks for deploying, minifying, and notifying search engines about updates
+* image_optim plugin to optimize all images
+* Basic SEO
 
-This Jekyll theme was crafted with <3 by [John Otander](http://johnotander.com)
-([@4lpine](https://twitter.com/4lpine)).
+### SASS
+Includes the following variables:
 
-中文版 <https://github.com/ee0703/pixyll-zh-cn>.
+**Base Colors**
+* $primary-color
+* $secondary-color
+* $complimentary-color
+* $body-bg
+* $body-font-color
 
-## Getting Started
+**Links**
+* link-color
+* link-hover-color
+* link-visited-color
 
-If you're completely new to Jekyll, I recommend checking out the documentation at <http://jekyllrb.com> or there's a tutorial by [Smashing Magazine](http://www.smashingmagazine.com/2014/08/01/build-blog-jekyll-github-pages/).
+**Text**
+* $base-font-family
+* $base-font-size
+* $small-font-size
+* $base-line-height
 
-### Installing Jekyll
+**Navbar Settings**
+* $navbar-height
+* $navbar-color
+* $navbar-text-color
+* $navbar-hover-color
+* $navbar-active-color
+* $navbar-font-size
+* $navbar-font-family
 
-If you don't have Jekyll already installed, you will need to go ahead and do that.
+**Socials Navbar Settings**
+* $socials-font-color
+* $socials-font-size
 
-```
-$ gem install jekyll
-```
+**Utility**
+* $spacing-unit
 
-#### Verify your Jekyll version
+**Footer**
+* $footer-height
+* $footer-color
 
-It's important to also check your version of Jekyll since this project uses Native Sass which
-is [only supported by 2.0+](http://jekyllrb.com/news/2014/05/06/jekyll-turns-2-0-0/).
+### GRID
+Uses minimal sass [components](https://github.com/zurb/bower-foundation/tree/master/scss/foundation/components) from Zurb Foundation:
 
-```
-$ jekyll -v
-# This should be jekyll 2.0.0 or later
-```
+* [grid](http://foundation.zurb.com/docs/components/grid.html)
 
-### Fork, then clone
+### NAVIGATION
+A fully responsive navigation bar with the following features:
 
-Fork the repo, and then clone it so you've got the code locally.
+* 2 navigation areas
+  * Left - Primary navigation 
+  * Right - Social media links
+* Both navigation areas are populated using Jekyll 'data' files, nav.yml and socials.yml respectively
+* Ability to create 'external' links that link offsite while still using socials.yml to do so
+* Easily customizable text, link, and background colors using the supplied sass variables
 
-### Modify the _config.yml
+### BANNER
+This theme is configured with a 'wrap' of 1920px so banner images look best at that width.
 
-The `_config.yml` located in the root of the Pixyll directory contains all of the configuration details
-for the Jekyll site. The defaults are:
+First it checks a pages yaml frontmatter for the header image, if none is found then it checks for a site-wide default in your config.yml, if none is found then no banner image is displayed.
 
-```yml
-# Site settings
-title: Pixyll
-email: your_email@example.com
-author: John Otander
-description: "A simple, beautiful theme for Jekyll that emphasizes content rather than aesthetic fluff."
-baseurl: ""
-url: "http://pixyll.com"
+**Site-Wide**
+You can set a site-wide default banner image by adding the following to your _config.yml:
+  `header_image: "path/to/image.jpg"`
 
-# Build settings
-markdown: kramdown
-permalink: pretty
-paginate: 3
-```
+**Per Page**
+You can also override it per page by adding the following code to a pages yaml front matter:
+  `header_image: path/to/image.jpg`
 
-### Jekyll Serve
+### STICKY FOOTER
+I like my footers to stay on the bottom of the page no matter what. You can easily edit the size and color using the supplied sass variables.
 
-Then, start the Jekyll Server. I always like to give the `--watch` option so it updates the generated HTML when I make changes.
+### JAVASCRIPT FREE
+The only thing in the theme that uses Javascript is the optional use of google analytics.
 
-```
-$ jekyll serve --watch
-```
+### RAKEFILE
+Includes the following custom tasks:
 
-Now you can navigate to `localhost:4000` in your browser to see the site.
+* *minify_html* - uses HTML_compressor to minify HTML
+* *notify* - pings google and bing to notify them about changes to the site/sitemap
 
-### Using Github Pages
+These tasks have been bundled into custom build and deploy tasks
 
-You can host your Jekyll site for free with Github Pages. [Click here](https://pages.github.com/) for more information.
+* *build* - runs `jekyll build` followed by `minify_html`
+* *deploy* - runs `s3_website push` and then `notify`
 
-#### A configuration tweak if you're using a gh-pages sub-folder
+### IMAGE_OPTIM PLUGIN
 
-In addition to your github-username.github.io repo that maps to the root url, you can serve up sites by using a gh-pages branch for other repos so they're available at github-username.github.io/repo-name.
+* Custom [image_optim](https://github.com/chrisanthropic/image_optim-jekyll-plugin) plugin will optimize all images in the /images folder and any subdirectories
+  * Uses the original [image_optim](https://github.com/toy/image_optim)
+* Cache file is created on the first run so that only updated/new images are optimized
 
-This will require you to modify the `_config.yml` like so:
+### BASIC SEO
 
-```yml
-# Site settings
-title: Repo Name
-email: your_email@example.com
-author: John Otander
-description: "Repo description"
-baseurl: "/repo-name"
-url: "http://github-username.github.io"
+* Google Analytics*
+  * *Uses Javascript
+  * just add your `google_universal_analytics ID` to the _config.yml file.
+* Facebook Open Graph
+  Fill out the following in your config.yml
 
-# Build settings
-markdown: kramdown
-permalink: pretty
-paginate: 3
-```
+  ```
+    facebook_app_id:                      #enter your App ID
+    facebook_locale: en_US
+    facebook_page:                        #the URL of your Facebook Page
+    facebook_image:			#enter a default image (at least 200x200px) to use here for posts/pages that don't have one.	
+  ```
 
-This will ensure that the the correct relative path is constructed for your assets and posts. Also, in order to run the project locally, you will need to specify the blank string for the baseurl: `$ jekyll serve --baseurl ''`.
+* Twitter Cards
+  Fill out the following in your config.yml
 
-##### If you don't want the header to link back to the root url
+  ```
+    twitter_user: 
+    twitter_card: true
+    twitter_image: 			 #enter a default image (at least 200x200px) to use here for posts/pages that don't have one.
+  ```
 
-You will also need to tweak the header include `/{{ site.baseurl }}`:
-
-```html
-<header class="site-header px2 px-responsive">
-  <div class="mt2 wrap">
-    <div class="measure">
-      <a href="{{ site.url }}/{{ site.baseurl }}">{{ site.title }}</a>
-      <nav class="site-nav right">
-        {% include navigation.html %}
-      </nav>
-    </div>
-  </div>
-</header>
-```
-
-A relevant Jekyll Github Issue: <https://github.com/jekyll/jekyll/issues/332>
-
-### Contact Form
-
-If you'd like to keep the contact form, which uses <http://formspree.io>, you will need to update the email address.
-
-Currently, the `contact.html` has the following:
-
-```html
-<form action="http://formspree.io/johnotander@icloud.com" method="POST" class="form-stacked form-light">
-```
-
-Where it says `johnotander@icloud.com`, you will need to change that to the email that you wish to have the form data sent to. It will require you to fill the form out when you push it live for the first time so that you can confirm your email.
-
-More setup instructions and advanced options can be found at [http://formspree.io](http://formspree.io/)
-
-### Disqus
-
-To configure Disqus, set up a [Disqus site](https://disqus.com/admin/create/) with the same name as your site. Once that is complete,
-go to the admin page for your site. Under the "Settings" tab there is a button called "Universal Code". Take that code and replace it
-in the `_layouts/post.html` file between the `{% if site.disqus_shortname %}` and `{% endif %}` tags.
-
-### Customizing the CSS
-
-All variables can be found in the `_sass/_variables.scss` file, toggle these as you'd like to change the look and feel of Pixyll.
-
-### Page Animation
-
-If you would like to add a [fade-in-down effect](http://daneden.github.io/animate.css/), you can add `animated: true` to your `_config.yml`.
-
-### Put in a Pixyll Plug
-
-If you want to give credit to the Pixyll theme with a link to <http://pixyll.com> or my personal website <http://johnotander.com> somewhere, that'd be awesome. No worries if you don't.
-
-### Enjoy
-
-I hope you enjoy using Pixyll. If you encounter any issues, please feel free to let me know by creating an [issue](https://github.com/johnotander/pixyll/issues). I'd love to help.
-
-## Upgrading Pixyll
-
-Pixyll is always being improved by its users, so sometimes one may need to upgrade.
-
-#### Ensure there's an upstream remote
-
-If `git remote -v` doesn't have an upstream listed, you can do the following to add it:
+* Sitewide description/keywords
+  * Edit the description in your config.yml and it will be used as the default description in the metadata for every page/post.
+  * Add `Keywords: some, bunch, of random keywords` to your config.yml and it will be used as the default keywords in the metadata for every post/page.
+  * Set specific keywords per page/post (override the sitewide defaults) by adding them to the front matter of any page/post.
+    * Example:
 
 ```
-git remote add upstream https://github.com/johnotander/pixyll.git
+---
+Title: Example Post
+Description: Some Yaml Frontmatter to show what's what.
+Keywords: Example, Zim, this is only a test
+---
 ```
 
-#### Pull in the latest changes
+## Basic Use
+For now it's best to start fresh or install the them and then transfer over any old files (posts, images, etc) from your old site.
 
-```
-git pull upstream master
-```
+* Git clone this repo, cd into the directory and run `bundle install --binstubs --path=vendor` to install the required dependencies.
+* Edit your config.yml file
+  * Change the title and description at a minimum.
+* Update your navigation 
+  * edit the `_data/nav.yml` file as needed
+* Update your social links
+  * edit the `_data/socials.yml` file as needed
 
-There may be merge conflicts, so be sure to fix the files that git lists if they occur. That's it!
+## Deploying
+I use S3 to host my site and the [s3_website](https://github.com/laurilehmijoki/s3_website) plugin to deploy, if you don't do both of these, delete the `s3_website.yml` file and edit the deploy raketask to fit your needs.
 
-## Contributing
+If you plan on using S3 make sure you edit the configs:
 
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+* FIRST - add the s3_website.yml file to your gitignore so your credentials don't end up on the web.
+* s3_website.yml
+  * add your `s3_id`. `s3_secret`, and `s3_bucket`
+* Update the Rakefile notify task to use your url
+  * replace `site = "www.YOUR-URL.com"` with your actual url.
 
-## Thanks to the following:
-
-* [BASSCSS](http://basscss.com)
-* [Jekyll](http://jekyllrb.com)
-* [Refills](http://refills.bourbon.io/)
-* [Solarized](http://ethanschoonover.com/solarized)
-* [Animate.css](http://daneden.github.io/animate.css/)
+## MISC.
+The blog posts included are duplicated from my actual blog and are the documentation of how I created this theme. From starting with a fresh Jekyll installation to the final product.
