@@ -8,9 +8,9 @@ title: About Caroline Amado
 	
 	<table style="width:80%">
 	<tr>
-		<td style="width: 10%"> </td><img src="{{ '/assets/img/me.jpg' | prepend: site.baseurl }}" alt="Caroline Amado"> <-Change these to respective widths
+		<td style="width: 30%"><img src="{{ '/assets/img/me.jpg' | prepend: site.baseurl }}" alt="Caroline Amado"></td> 
 
-		<td style="width: 90%"> <p align="justify" >I am a motivated professional and with contagious energy, communicative and interested in the technical 
+		<td style="width: 70%"> <p align="justify" >I am a motivated professional and with contagious energy, communicative and interested in the technical 
 								area. I can easily adapt to new situations, I am self-taught, I like challenges and work with logical and analytical thinking. 
 								I'm used to working with different sizes of teams. Good references about me in my old works can be found due to my pro activity.</p>
 
