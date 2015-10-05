@@ -1,4 +1,6 @@
 _site
 .sass-cache
-Gemfile.lock
 .DS_Store
+
+# Ignore the config file that's used for gh-pages.
+_config.gh-pages.yml
