@@ -1,7 +1,7 @@
 # Site settings
-title: Caroline Amado
-email: carolaraujoamado@gmail.com
-url: http://carolineamado.github.io/
+title: Freelancer
+email: your-email@domain.com
+url: https://example.github.io
 description: "Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description."
 skills: "Web Developer - Graphic Artist - User Experience Designer"
 
@@ -17,31 +17,31 @@ color:
 
 # Footer settings
 footer:
-  copyright: Caroline Amado
-  location: São Paulo
+  copyright: Dr. Henry Jekyll
+  location: Location
   social: Around the Web
   credits: Credits
 
 # Social networks usernames (many more available: google-plus, flickr, dribbble, pinterest, instagram, tumblr, linkedin, etc.)
 social:
   - title: twitter
-    url: http://twitter.com/carolamado_
+    url: http://twitter.com/jekyllrb
   - title: facebook
-    url: https://www.facebook.com/carolineriot
+    url:
   - title: stack-overflow
     url: http://stackoverflow.com/questions/tagged/jekyll
   - title: bitbucket
     url: http://bitbucket.org/jekyll
   - title: github
-    url: https://github.com/carolineamado/
+    url: http://github.com/jekyll
 
 # Postal address (add as many lines as necessary)
 address:
-  - line: São Paulo
-  - line: Brazil
+  - line: 3481 Melrose Place
+  - line: Beverly Hills, CA 90210
 
 # Credits content
-credits: 'Keep it simple'
+credits: 'Freelancer is a free to use, open source Bootstrap theme created by <a href="http://startbootstrap.com">Start Bootstrap</a>.'
 
 # Build settings
 markdown: kramdown
