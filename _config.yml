@@ -17,10 +17,10 @@ color:
 
 # Footer settings
 footer:
-  copyright: Caroline Amado
-  location: Sao Paulo
+  #copyright: Caroline Amado
+  #location: Sao Paulo
   social: Around the Web
-  credits: Credits
+  #credits: Credits
 
 # Social networks usernames (many more available: google-plus, flickr, dribbble, pinterest, instagram, tumblr, linkedin, etc.)
 social:
