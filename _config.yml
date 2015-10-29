@@ -17,8 +17,8 @@ color:
 
 # Footer settings
 footer:
-  #copyright: Caroline Amado
-  #location: Sao Paulo
+  copyright: Caroline Amado
+  location: 
   social: Around the Web
   #credits: Credits
 
@@ -35,11 +35,11 @@ social:
 
 # Postal address (add as many lines as necessary)
 address:
-  - line: Sao Paulo
+  - line: 
   
 
 # Credits content
-credits: 'Keep it Simple'
+credits:
 
 # Build settings
 markdown: kramdown
