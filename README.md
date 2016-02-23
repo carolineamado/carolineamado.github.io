@@ -1,32 +1,40 @@
-# YAX-Coming-soon-Jekyll-Template
-Free Bootstrap HTML5 CSS3 Responsive Coming soon  Jekyll template
+# .X [![Build Status](https://travis-ci.org/nandomoreirame/dotX.svg?branch=master)](https://travis-ci.org/nandomoreirame/dotX)
 
-Designed by : Ilya B.  
-url: https://www.behance.net/gallery/18421675/Free-Bootstrap-Psd-Coming-Soon-Template  
+> Simple & Beautiful Jekyll theme
 
-Converted PSD to HTML/CSS by:  
-Morteza Aghili  
-bio: http://mortezaaghili.github.io/  
+### [Demo](http://nandomoreira.me/dotX/)
 
-Adpated to Jekyll by [yonojoy](https://github.com/yonojoy)
+![dotX - free Jekyll theme](/screenshot.png)
 
-## Usage
-Edit `index.md` to contain your message.
+---
 
-Edit `_config.yml` and add the following params:
+### Start in 4 steps
 
-* `countdown` to contain the target date in GMT/UTC
-* `owner` to contain infos about the site owner.
+1. Download or clone repo `git clone git@github.com:nandomoreirame/dotX.git`
+2. Enter the folder: `cd dotX/`
+3. Install Ruby gems: `bundle install`
+4. Start Jekyll server: `jekyll serve`
 
-That's it.
+Access, [localhost:4000/dotX](http://localhost:4000/dotX)
 
-## Installation
+### Deploy in Github pages in 2 steps
 
-Requires [Jekyll](http://jekyllrb.com/) 3+. 
+1. Change the variables `GITHUB_REPONAME` and `GITHUB_REPO_BRANCH` in `Rakefile`
+2. Run `rake` or `rake publish` for build and publish on Github
 
-If you are creating a new Jekyll site using Skinny Bones following these steps:
+---
 
-1. Download and unzip.
-2. Run `bundle install` to install all dependencies 
-3. Update `_config.yml` and `index.md` as described above.
+### Using Rake tasks
 
+* Create a new page: `rake page name="contact.md"`
+* Create a new post: `rake post title="TITLE OF THE POST"`
+
+---
+
+### Copyright and license
+
+It is under [the MIT license](/LICENSE).
+
+Enjoy :yum:
+
+by [nandomoreira.me](http://nandomoreira.me)
