@@ -1,45 +1,32 @@
-# jekyll-uno
+# YAX-Coming-soon-Jekyll-Template
+Free Bootstrap HTML5 CSS3 Responsive Coming soon  Jekyll template
 
-Jekyll-Uno - a minimal, responsive theme for Jekyll based on the [Uno](https://github.com/daleanthony/Uno) theme for Ghost.
+Designed by : Ilya B.  
+url: https://www.behance.net/gallery/18421675/Free-Bootstrap-Psd-Coming-Soon-Template  
 
-> :warning:
-  This theme requires ruby and rubygems installed
+Converted PSD to HTML/CSS by:  
+Morteza Aghili  
+bio: http://mortezaaghili.github.io/  
 
-### Features
+Adpated to Jekyll by [yonojoy](https://github.com/yonojoy)
 
-* Clean layout
-* Resposive layout
-* Pagination
-* Syntax highlighting
-* Social links
-* Tags listing page
-* Categories listing page
-* Google Analytics integration
-* Disqus integration
+## Usage
+Edit `index.md` to contain your message.
 
----
+Edit `_config.yml` and add the following params:
 
-### Install and Test
+* `countdown` to contain the target date in GMT/UTC
+* `owner` to contain infos about the site owner.
 
-1. Download or clone repo `git clone git@github.com:joshgerdes/jekyll-uno.git`
-2. Enter the folder: `cd jekyll-uno/`
-3. If you don't have bundler installed: `gem install bundler`
-3. Install Ruby gems: `bundle install`
-4. Start Jekyll server: `jekyll serve`
+That's it.
 
-Access via: [http://localhost:4000/jekyll-uno](http://localhost:4000/jekyll-uno)
+## Installation
 
----
+Requires [Jekyll](http://jekyllrb.com/) 3+. 
 
-### Demo and Download
+If you are creating a new Jekyll site using Skinny Bones following these steps:
 
-[Demo](http://joshgerdes.com/jekyll-uno/)
-[Download](https://github.com/joshgerdes/jekyll-uno/archive/master.zip)
+1. Download and unzip.
+2. Run `bundle install` to install all dependencies 
+3. Update `_config.yml` and `index.md` as described above.
 
-![jekyll-uno - free Jekyll theme](/screenshot.png)
-
----
-
-### Copyright and license
-
-It is under [the MIT license](/LICENSE).
