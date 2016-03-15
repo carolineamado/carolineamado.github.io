@@ -12,4 +12,4 @@ github_username:  carolineamado
 
 # Build settings
 markdown: kramdown
-encoding: 	Cp1252
+encoding: ISO8859_9
