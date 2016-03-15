@@ -12,4 +12,5 @@ github_username:  carolineamado
 
 # Build settings
 markdown: kramdown
-encoding: UTF-8
+encoding: windows-1252
+
