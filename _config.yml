@@ -12,5 +12,5 @@ github_username:  carolineamado
 
 # Build settings
 markdown: kramdown
-encoding: Unicode
+encoding: iso-8859-1
 
